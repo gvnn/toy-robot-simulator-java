@@ -8,13 +8,18 @@ public class ToyRobot {
     private Direction direction;
     private Board board;
 
-    public ToyRobot() {
-    }
-
     public ToyRobot(Board board) {
         this.board = board;
     }
 
+    /**
+     * Places the robot on the board  in position X,Y and facing NORTH, SOUTH, EAST or WEST
+     *
+     * @param position  Robot position
+     * @param direction Robot direction
+     * @return true if placed successfully
+     * @throws ToyRobotException
+     */
     public boolean place(Position position, Direction direction) throws ToyRobotException {
 
         if (this.board == null)
@@ -37,6 +42,11 @@ public class ToyRobot {
         return true;
     }
 
+    /**
+     * Moves the robot one unit forward in the direction it is currently facing
+     *
+     * @return true if moved successfully
+     */
     public boolean move() {
         if (this.position == null || this.board == null)
             return false;
@@ -73,6 +83,11 @@ public class ToyRobot {
         return this.direction;
     }
 
+    /**
+     * Rotates the robot 90 degrees LEFT
+     *
+     * @return true if rotated successfully
+     */
     public boolean rotateLeft() {
         if (this.direction == null)
             return false;
@@ -81,6 +96,11 @@ public class ToyRobot {
         return true;
     }
 
+    /**
+     * Rotates the robot 90 degrees RIGHT
+     *
+     * @return true if rotated successfully
+     */
     public boolean rotateRight() {
         if (this.direction == null)
             return false;
@@ -89,6 +109,9 @@ public class ToyRobot {
         return true;
     }
 
+    /**
+     * Returns the X,Y and Direction of the robot
+     */
     public String report() {
         if (this.position == null || this.direction == null)
             return null;
@@ -103,6 +126,13 @@ public class ToyRobot {
         );
     }
 
+    /**
+     * Evals and executes a string command.
+     *
+     * @param inputString command string
+     * @return string value of the executed command
+     * @throws ToyRobotException
+     */
     public String eval(String inputString) throws ToyRobotException {
         String[] args = inputString.split(" ");
 
@@ -118,7 +148,7 @@ public class ToyRobot {
         }
 
         // validate PLACE params
-        String[] params = new String[]{};
+        String[] params;
         int x = 0;
         int y = 0;
         Direction commandDirection = null;
@@ -133,7 +163,7 @@ public class ToyRobot {
             }
         }
 
-        String output = "";
+        String output;
 
         switch (command) {
             case PLACE:

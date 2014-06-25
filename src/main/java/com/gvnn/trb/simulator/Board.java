@@ -14,15 +14,8 @@ public class Board {
         return this.rows;
     }
 
-    public void setRows(int rows) {
-        this.rows = rows;
-    }
-
     public int getColumns() {
         return this.columns;
     }
 
-    public void setColumns(int columns) {
-        this.columns = columns;
-    }
 }

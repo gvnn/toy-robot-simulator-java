@@ -25,10 +25,16 @@ public enum Direction {
         return map.get(directionNum);
     }
 
+    /**
+     * Returns the direction on the left of the current one
+     */
     public Direction leftDirection() {
         return rotate(-1);
     }
 
+    /**
+     * Returns the direction on the right of the current one
+     */
     public Direction rightDirection() {
         return rotate(1);
     }
