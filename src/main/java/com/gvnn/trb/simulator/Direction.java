@@ -1,5 +1,6 @@
 package com.gvnn.trb.simulator;
 
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,29 +11,30 @@ public enum Direction {
 
     static {
         for (Direction directionEnum : Direction.values()) {
-            map.put(directionEnum.direction, directionEnum);
+            map.put(directionEnum.directionIndex, directionEnum);
         }
     }
 
-    private final int direction;
+    private int directionIndex;
 
     private Direction(int direction) {
-        this.direction = direction;
+        this.directionIndex = direction;
     }
 
     public static Direction valueOf(int directionNum) {
         return map.get(directionNum);
     }
 
-    public Direction rotateLeft() {
+    public Direction leftDirection() {
         return rotate(-1);
     }
 
-    public Direction rotateRight() {
+    public Direction rightDirection() {
         return rotate(1);
     }
 
     private Direction rotate(int step) {
-        return Direction.valueOf((Direction.valueOf(this.direction).direction + step) % map.size());
+        return Direction.valueOf(Math.abs(this.directionIndex + step) % map.size());
     }
+
 }
