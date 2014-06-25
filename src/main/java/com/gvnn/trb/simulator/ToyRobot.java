@@ -74,6 +74,10 @@ public class ToyRobot {
         return true;
     }
 
+    public String report() {
+        return this.position.getX() + "," + this.position.getY() + "," + this.direction.toString();
+    }
+
     private boolean isValidPositionOnBoard(Board board, Position position) {
         return !(
                 position.getX() > board.getColumns() || position.getX() < 0 ||

@@ -94,4 +94,17 @@ public class ToyRobotTest {
 
     }
 
+    @Test
+    public void testReport() throws ToyRobotException {
+        Board mockBoard = getMockboard();
+        ToyRobot robot = new ToyRobot();
+        robot.place(mockBoard, new Position(5, 5), Direction.EAST);
+        Assert.assertEquals(robot.report(), "5,5,EAST");
+        robot.move(); // this is going outside. Command is ignored and the report is the same as before
+        Assert.assertEquals(robot.report(), "5,5,EAST");
+        robot.rotateRight();
+        robot.move();
+        Assert.assertEquals(robot.report(), "5,4,SOUTH");
+    }
+
 }
