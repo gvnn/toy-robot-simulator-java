@@ -1,7 +1,7 @@
 package com.gvnn.trb;
 
 import com.gvnn.trb.exception.ToyRobotException;
-import com.gvnn.trb.simulator.Board;
+import com.gvnn.trb.simulator.SquareBoard;
 import com.gvnn.trb.simulator.ToyRobot;
 
 import java.io.Console;
@@ -17,8 +17,9 @@ public class Main {
             System.exit(1);
         }
 
-        Board board = new Board(4, 4);
-        ToyRobot robot = new ToyRobot(board);
+        SquareBoard squareBoard = new SquareBoard(4, 4);
+        ToyRobot robot = new ToyRobot();
+        Game game = new Game(squareBoard, robot);
 
         System.out.println("Toy Robot Simulator");
         System.out.println("Enter a command, Valid commands are:");
@@ -31,7 +32,7 @@ public class Main {
                 keepRunning = false;
             } else {
                 try {
-                    String outputVal = robot.eval(inputString);
+                    String outputVal = game.eval(inputString);
                     System.out.println(outputVal);
                 } catch (ToyRobotException e) {
                     System.out.println(e.getMessage());

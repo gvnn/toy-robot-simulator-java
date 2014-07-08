@@ -40,7 +40,12 @@ public enum Direction {
     }
 
     private Direction rotate(int step) {
-        return Direction.valueOf(Math.abs(this.directionIndex + step) % map.size());
+
+        int newIndex = (this.directionIndex + step) < 0 ?
+                map.size() - 1 :
+                (this.directionIndex + step) % map.size();
+
+        return Direction.valueOf(newIndex);
     }
 
 }
